@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+#require 'open-uri'
+
+puts "destroying chatrooms and messages..."
+
+Chatroom.destroy_all
+
+Message.destroy_all
+
+chatroom_1 = Chatroom.new(
+  name: "service client"
+)
+
+
+chatroom_1.save!
+
+puts "#{chatroom_1.name} has been created !"
