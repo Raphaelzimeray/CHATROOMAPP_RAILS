@@ -79,6 +79,3 @@ group :test do
   gem "webdrivers"
 end
 
-group :production do
-  gem 'redis-rack-cache'
-end
