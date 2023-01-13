@@ -31,6 +31,8 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
+  config.cache_store = :redis_store, "redis://localhost:6379/0/cache", { expires_in: 90.minutes }
+
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
 
@@ -40,6 +42,11 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
+
+  config.action_dispatch.rack_cache = {
+    metastore: "redis://localhost:6379/1/metastore",
+    entitystore: "redis://localhost:6379/1/entitystore"
+  }
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
